@@ -3,6 +3,8 @@ public class subArray {
     public static void printSubArray(int number[]) {
 
         int totalSubArrays = 0;
+        int largest = Integer.MIN_VALUE;
+        int smallest = Integer.MAX_VALUE;
 
         // starting point
         for (int start = 0; start < number.length; start++) {
@@ -16,6 +18,11 @@ public class subArray {
                 for (int k = start; k <= end; k++) {
                     System.out.print(number[k] + " ");
                     sum += number[k];
+                    if (largest < sum) {
+                        largest = sum;
+                    } else if (smallest > sum) {
+                        smallest = sum;
+                    }
                 }
 
                 System.out.println("= " + sum);
@@ -26,6 +33,8 @@ public class subArray {
         }
 
         System.out.println("Total Subarrays: " + totalSubArrays);
+        System.out.println("Largest value: " + largest);
+        System.out.println("Smallest value: " + smallest);
     }
 
     public static void main(String[] args) {
